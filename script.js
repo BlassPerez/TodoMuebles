@@ -39,7 +39,6 @@ let productos = [
 
 let carritoDeCompras = [];
 
-const MAX_PRODUCTOS_EN_CARRITO = 10;
 
 function agregarProductoACarrito(){
 
@@ -90,7 +89,7 @@ function listarProductosEnStock(){
 
 function agregarProductoAStock(){
     let nuevoProducto = {
-        id: productos.length + 2, 
+        id: productos.length + 1, 
         nombre: "", 
         precio: 0,
     }
@@ -98,6 +97,12 @@ function agregarProductoAStock(){
     let precio;
     do{
         nombre = prompt("Escriba el Nombre del nuevo producto: \n");
+        let existeEnStock = productos.some(producto => producto.nombre.toLowerCase() === nombre.toLowerCase());
+        if (existeEnStock){
+            alert("Este producto ya está en el stock")
+            return;
+        }
+
         precio = parseInt(prompt("Escriba el precio del producto"), 10)
     } while (!nombre || isNaN(precio) || precio <= 0);
     nuevoProducto.nombre = nombre;
@@ -117,8 +122,9 @@ function menu(){
             "2. Resetear carrito de compras \n" +
             "3. Mostrar carrito de compras \n" +
             "4. Agregar productos al stock de la tienda \n" +
-            "5. Salir \n" +
-            "Ingrese una opcion (1 - 5): "
+            "5. Listar productos en stock \n" +
+            "6. Salir \n" +
+            "Ingrese una opcion (1 - 6): "
         );
 
         switch (opcion) {
@@ -135,13 +141,16 @@ function menu(){
                 agregarProductoAStock();
                 break;
             case "5":
+                listarProductosEnStock();
+                break;
+            case "6":
                 alert("Gracias por comprar en Todo Muebles")
                 break;
             default:
-                alert("Opcion Invalida, Ingrese un numero del 1 al 5")
+                alert("Opcion Invalida, Ingrese un numero del 1 al 6")
                 break;
         }
-    } while (opcion !== "5");
+    } while (opcion !== "6");
 }
 
 menu();
