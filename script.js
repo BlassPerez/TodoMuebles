@@ -88,7 +88,24 @@ function listarProductosEnStock(){
     alert(mensaje);
 }
 
-function agregarProductoAStock(){};
+function agregarProductoAStock(){
+    let nuevoProducto = {
+        id: productos.length + 2, 
+        nombre: "", 
+        precio: 0,
+    }
+    let nombre;
+    let precio;
+    do{
+        nombre = prompt("Escriba el Nombre del nuevo producto: \n");
+        precio = parseInt(prompt("Escriba el precio del producto"), 10)
+    } while (!nombre || isNaN(precio) || precio <= 0);
+    nuevoProducto.nombre = nombre;
+    nuevoProducto.precio = precio;
+
+    productos.push(nuevoProducto);
+    alert("Producto Agregagado con éxito");
+};
 
 function menu(){
     let opcion;
