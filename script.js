@@ -3,14 +3,13 @@ let productos = [
     { 
         id: 1, 
         nombre: "Mesa", 
-        precio: 15000, 
-        stock: 20 
+        precio: 15000 
     },
     { 
         id: 2, 
         nombre: "Silla", 
-        precio: 75000, 
-        stock: 40 },
+        precio: 75000
+    },
     { 
         id: 3, 
         nombre: "Placard", 
@@ -44,7 +43,8 @@ const MAX_PRODUCTOS_EN_CARRITO = 10;
 
 function agregarProductoACarrito(){
 
-    
+    listarProductosEnStock();
+
     let productoAAgregar = prompt("Escriba el nombre del producto que desea agregar: ");
 
     let producto = productos.find(producto => producto.nombre.toLowerCase() === productoAAgregar.toLowerCase());
@@ -67,7 +67,7 @@ function mostrarCarrito(){
     let mensaje = "Productos listados en el carrito de compras: \n"
     for (let producto of carritoDeCompras){
         precioTotal += producto.precio;
-        mensaje += `Nombre: ${producto.nombre}, Precio: ${producto.precio} \n`;
+        mensaje += `${producto.nombre}, Precio: ${producto.precio} \n`;
     }
     let precioSinIVA = (precioTotal / 1.21).toFixed(2);
     mensaje += `El precio con IVA es: ${precioTotal} \n`;
@@ -77,7 +77,16 @@ function mostrarCarrito(){
 
 function resetearCarrito(){
     carritoDeCompras = [];
+    alert("Carrito vaciado correctamente");
 };
+
+function listarProductosEnStock(){
+    let mensaje = "Productos listados en el stock de la tienda: \n"
+    for (let producto of productos){
+        mensaje += `${producto.nombre}, Precio: ${producto.precio} \n`;
+    }
+    alert(mensaje);
+}
 
 function agregarProductoAStock(){};
 
