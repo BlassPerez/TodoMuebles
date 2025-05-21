@@ -1,60 +1,47 @@
-let productos = [
+function Producto(id, precio, nombre) {
+    this.id = id;
+    this.nombre = nombre;
+    this.precio = precio;
+}
 
-    { 
-        id: 1, 
-        nombre: "Mesa", 
-        precio: 15000 
-    },
-    { 
-        id: 2, 
-        nombre: "Silla", 
-        precio: 75000
-    },
-    { 
-        id: 3, 
-        nombre: "Placard", 
-        precio: 40000,
-    },
-    { 
-        id: 4, 
-        nombre: "Escritorio", 
-        precio: 30000,
-    },
-    { 
-        id: 5, 
-        nombre: "Alacena", 
-        precio: 25000,
-    },
-    { 
-        id: 6, 
-        nombre: "Cama", 
-        precio: 35000,
-    },
-    { 
-        id: 7, 
-        nombre: "Biblioteca", 
-        precio: 25000,
-    }
+let productos = [ 
+    new Producto(1, 15000, "Mesa"),
+    new Producto(2, 75000, "Silla"),
+    new Producto(3, 40000, "Placard"),
+    new Producto(4, 30000, "Escritorio"),
+    new Producto(5, 25000, "Alacena"),
+    new Producto(6, 35000, "Cama"),
+    new Producto(7, 25000, "Biblioteca"),
 ];
 
 let carritoDeCompras = [];
 
 
-function agregarProductoACarrito(){
+function agregarProductoACarrito(productoAAgregar){
 
-    listarProductosEnStock();
+    const existeProducto = carritoDeCompras.find((item) => item.id === productoAAgregar.id)
 
-    let productoAAgregar = prompt("Escriba el nombre del producto que desea agregar: ");
-
-    let producto = productos.find(producto => producto.nombre.toLowerCase() === productoAAgregar.toLowerCase());
-
-    if (producto){
-        carritoDeCompras.push(producto);
-        alert("Producto Agregado correctamente");
+    if (existeProducto) {
+        existeProducto.cantidad++;
     } else {
-        alert("No se encontro el producto en el stock");
-    }
+        const productoNuevo = {
+            ...producto,
+            cantidad: 1,
+        }
+    };
+    carritoDeCompras.push(productoNuevo)
+
+    guardarCarrito();
+
+    renderizarCarrito();
+
 };
+
+function guardarCarrito() {
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+
 
 function mostrarCarrito(){
     if (carritoDeCompras.length === 0){
