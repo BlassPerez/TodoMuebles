@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Tienda</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <script src="script.js"></script>
+  <h1>Tienda Muebles</h1>
+  <h2>Los mejores muebles, al mejor precio</h2>
+  <div id="productList"></div>
+
+  <h2>Carrito de compras</h2>
+  <div id="cartItems"></div>
+
+  <button onclick="resetearCarrito()">Vaciar Carrito</button>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
