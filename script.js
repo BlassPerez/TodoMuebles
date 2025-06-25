@@ -136,7 +136,7 @@ function realizarCompra() {
 
   Swal.fire({
     title: "Confirmar compra",
-    html: `Total a pagar: <strong>$${total}</strong>`,
+    html: `Total a pagar: $${total}`,
     icon: "question",
     showCancelButton: true,
     confirmButtonText: "Comprar",

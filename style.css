@@ -76,3 +76,22 @@ h1, h2 {
   align-items: center;
   margin-bottom: 10px;
 }
+
+.comprar-button,
+.vaciar-button {
+  padding: 10px 20px;
+  margin: 2px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.comprar-button:hover,
+.vaciar-button:hover {
+  background-color: #45a049;
+}
+.comprar-button:active,
+.vaciar-button:active {
+  background-color: #3e8e41;
+}
